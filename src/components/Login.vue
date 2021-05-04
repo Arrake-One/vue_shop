@@ -70,7 +70,21 @@ export default {
     login(){
       this.$refs.login_form.validate(valid=>{
         if (valid){
+
+          let duration= 1000
+          this.$message({
+            message:'登录中。。。',
+            duration,
+            type:'success',
+          })
+          setTimeout(()=>{
+            if (location.href.search('/login')!==-1){
+              this.$message.error("服务器响应超时,请重试")
+            }
+          },duration)
+
           axios.post('/login',this.login_form).then(response=>{
+              this.$message.closeAll()
             if (response.data.meta.status === 200) {
                 this.$message.success(response.data.meta.msg)
 

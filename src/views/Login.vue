@@ -63,38 +63,41 @@ export default {
 
     }
   },
-  methods:{
-    resetForm(){
+  methods: {
+    resetForm () {
       this.$refs.login_form.resetFields()
     },
-    login(){
-      this.$refs.login_form.validate(valid=>{
-        if (valid){
+    login () {
+      this.$refs.login_form.validate(valid => {
+        if (valid) {
 
-          let duration= 1000
+          let duration = 1000
           this.$message({
-            message:'登录中。。。',
+            message: '登录中。。。',
             duration,
-            type:'success',
+            type: 'success',
           })
-          setTimeout(()=>{
-            if (location.href.search('/login')!==-1){
-              this.$message.error("服务器响应超时,请重试")
+          let reminder = setTimeout(() => {
+            if (location.href.search('/login') !== -1) {
+              this.$message.error('服务器响应超时,请重试')
             }
-          },duration)
+          }, duration)
 
-          axios.post('/login',this.login_form).then(response=>{
-              this.$message.closeAll()
+          axios.post('/login', this.login_form).then(response => {
+            this.$message.closeAll()
             if (response.data.meta.status === 200) {
-                this.$message.success(response.data.meta.msg)
 
-                sessionStorage.setItem('token',response.data.data.token)
+              this.$message.success(response.data.meta.msg)
 
-                this.$router.push({
-                  path:'/home'
-                })
-            }else {
-                this.$message.error(response.data.meta.msg)
+              sessionStorage.setItem('token', response.data.data.token)
+
+              this.$router.push({
+                path: '/home'
+              })
+              clearTimeout(reminder)
+            } else {
+              this.$message.error(response.data.meta.msg)
+              clearTimeout(reminder)
             }
           })
         }

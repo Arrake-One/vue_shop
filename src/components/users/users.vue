@@ -203,8 +203,11 @@ export default {
         this.$http.delete("/users/"+row.id).then(response=>{
           if (response.data.meta.status === 200) {
             this.$message.success(response.data.meta.msg)
-            //去到最后一页
-            this.getListParams.pagenum=Math.ceil((this.usersData.total-1)/this.getListParams.pagesize)
+            //如果查询当前的页码数大于当前页数，到最后一页去
+            let last_page=Math.ceil((this.usersData.total-1)/this.getListParams.pagesize)
+            if (this.getListParams.pagenum>last_page){
+              this.getListParams.pagenum=last_page
+            }
             this.getUserList()
           }else {
             this.$message.error(response.data.meta.msg)

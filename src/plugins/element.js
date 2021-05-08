@@ -24,7 +24,10 @@ import {
   Tabs,
   Tag,
   Divider,
-  Tree
+  Tree,
+  Steps,
+  Step,
+  Alert
 } from 'element-ui'
 
 Vue.use(Button)
@@ -55,6 +58,9 @@ Vue.use(Tabs)
 Vue.use(Tag)
 Vue.use(Divider)
 Vue.use(Tree)
+Vue.use(Step)
+Vue.use(Alert)
+Vue.use(Steps)
 
 Vue.prototype.$message=Message
 Vue.prototype.$confirm=MessageBox.confirm

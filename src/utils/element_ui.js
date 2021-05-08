@@ -7,8 +7,11 @@ this.$confirm('确认删除该用户吗？','提示',{
   this.$http.delete("/users/"+row.id).then(response=>{
     if (response.data.meta.status === 200) {
       this.$message.success(response.data.meta.msg)
-      //去到最后一页
-      this.getListParams.pagenum=Math.ceil((this.usersData.total-1)/this.getListParams.pagesize)
+      //如果查询当前的页码数大于当前页数，到最后一页去
+      let last_page=Math.ceil((this.usersData.total-1)/this.getListParams.pagesize)
+      if (this.getListParams.pagenum>last_page){
+        this.getListParams.pagenum=last_page
+      }
       this.getUserList()
     }else {
       this.$message.error(response.data.meta.msg)
@@ -68,4 +71,38 @@ this.$confirm('确认删除该用户吗？','提示',{
   :default-checked-keys="[5]"
   :props="defaultProps">
 </el-tree>
+ */
+//breadcrumb
+/*
+  <el-breadcrumb separator-class="el-icon-arrow-right">
+      <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
+      <el-breadcrumb-item>权限管理</el-breadcrumb-item>
+      <el-breadcrumb-item>角色列表</el-breadcrumb-item>
+    </el-breadcrumb>
+ */
+
+//search
+/*
+  <el-row :gutter="20">
+      <el-col :span="8">
+        <el-input placeholder="请输入内容">
+          <el-button slot="append" icon="el-icon-search"></el-button>
+        </el-input>
+      </el-col>
+      <el-col :span="4">
+        <el-button type="primary">添加商品</el-button>
+      </el-col>
+    </el-row>
+ */
+//分页
+/*
+    <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="currentPage4"
+      :page-sizes="[100, 200, 300, 400]"
+      :page-size="100"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="400">
+    </el-pagination>
  */

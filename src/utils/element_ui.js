@@ -106,3 +106,10 @@ this.$confirm('确认删除该用户吗？','提示',{
       :total="400">
     </el-pagination>
  */
+//多选
+/*
+  <el-select v-model="formInline.region" placeholder="活动区域">
+      <el-option label="区域一" value="shanghai"></el-option>
+      <el-option label="区域二" value="beijing"></el-option>
+    </el-select>
+ */

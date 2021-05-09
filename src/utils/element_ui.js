@@ -96,6 +96,36 @@ this.$confirm('确认删除该用户吗？','提示',{
  */
 //分页
 /*
+     pagination: {
+        pagenum: 1,
+        pageSizes: [1, 5, 10, 20],
+        pageSize: 5,
+        total: 0,
+      },
+      getListParams: {
+        query: '',
+        pagenum: 1,
+        pagesize: 5
+      },
+
+       getCategoriesList () {
+      this.$http.get('/categories', {
+        params: this.getListParams
+      }).then(response => {
+        if (response.data.meta.status === 200) {
+          this.categoriesData = response.data.data.result
+          this.pagination.total = response.data.data.total
+          this.pagination.pageSize = this.getListParams.pagesize
+          this.pagination.pagenum = this.getListParams.pagenum
+        } else {
+          this.$message.error(response.data.meta.msg)
+        }
+      }).catch(e => {
+        console.log(e)
+        this.$message.error('网络请求失败，请检查网络')
+      })
+    },
+
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
@@ -105,6 +135,14 @@ this.$confirm('确认删除该用户吗？','提示',{
       layout="total, sizes, prev, pager, next, jumper"
       :total="400">
     </el-pagination>
+       handleSizeChange(pageSize){
+      this.pagination.pageSize=pageSize
+      this.getCategoriesList()
+    },
+    handleCurrentChange(pagenum){
+      this.pagination.pagenum=pagenum
+      this.getCategoriesList()
+    }
  */
 //多选
 /*
@@ -112,4 +150,11 @@ this.$confirm('确认删除该用户吗？','提示',{
       <el-option label="区域一" value="shanghai"></el-option>
       <el-option label="区域二" value="beijing"></el-option>
     </el-select>
+ */
+//级联
+/*
+ <el-cascader
+            :options="dataForm.addForm.categoriesList"
+            :props="{ expandTrigger: 'hover',label:'cat_name'}"
+            @change="handleChange"></el-cascader>
  */

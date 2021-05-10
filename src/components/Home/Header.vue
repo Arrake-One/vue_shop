@@ -39,7 +39,8 @@ export default {
       width: 60px;
       background-repeat: no-repeat;
       background-position: center;
-      background-image: url("../../assets/heima.png");
+      background-image: url("../../assets/logo.png");
+      background-size: 60px 60px;
     }
 
     span {

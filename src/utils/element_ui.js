@@ -71,6 +71,7 @@ this.$confirm('确认删除该用户吗？','提示',{
   :default-checked-keys="[5]"
   :props="defaultProps">
 </el-tree>
+
  */
 //breadcrumb
 /*
@@ -155,6 +156,16 @@ this.$confirm('确认删除该用户吗？','提示',{
 /*
  <el-cascader
             :options="dataForm.addForm.categoriesList"
-            :props="{ expandTrigger: 'hover',label:'cat_name'}"
-            @change="handleChange"></el-cascader>
+            :props="props"
+            v-model="dataForm.addForm.selectKeys"
+            clearable
+            style="width: 100%"
+            ></el-cascader>
+             props: {
+        expandTrigger: 'hover',
+        label: 'cat_name',
+        value:'cat_id',
+        children:'children',
+        checkStrictly:true
+      },
  */

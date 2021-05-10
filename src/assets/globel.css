@@ -6,9 +6,10 @@ html,body,#app{
     font-size: 12px;
 }
 
-.el-card,.el-table,.el-pagination{
+.el-card,.el-table,.el-pagination,.margin_top{
     margin-top: 15px;
 }
 .el-cascader-panel{
     height: 200px;
 }
+

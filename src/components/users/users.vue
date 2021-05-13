@@ -216,7 +216,7 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        this.$http.delete('/users/' + row.id).then(response => {
+        this.$http.delete('/users/id=' + row.id).then(response => {
           if (response.data.meta.status === 200) {
             this.$message.success(response.data.meta.msg)
             //如果查询当前的页码数大于当前页数，到最后一页去

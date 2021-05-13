@@ -168,4 +168,14 @@ this.$confirm('确认删除该用户吗？','提示',{
         children:'children',
         checkStrictly:true
       },
+
+ */
+//checkbox
+/*
+ <el-checkbox-group
+    v-model="checkedCities"
+    :min="1"
+    :max="2">
+    <el-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox>
+  </el-checkbox-group>
  */

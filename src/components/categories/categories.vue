@@ -13,6 +13,7 @@
           >添加分类</el-button>
         </el-col>
       </el-row>
+<!--      使用依赖vue-table-tree-grid-->
       <tree-table
         class="tree_table"
         :data="categoriesData"

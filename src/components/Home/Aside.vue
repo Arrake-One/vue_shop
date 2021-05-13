@@ -8,6 +8,7 @@
       :style="{width:isCollapse?'64px':'200px'}"
       :collapse-transition="false"
       :default-active="this.$route.path"
+      unique-opened
       router
       >
       <div class="toggle_button_aside"

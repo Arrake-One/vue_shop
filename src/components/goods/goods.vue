@@ -48,9 +48,10 @@
         </el-table-column>
         <el-table-column label="创建时间"
                          prop="add_time"
-                         :width="140"
+                         :width="160"
+                         v-slot="{row}"
         >
-
+          {{row.add_time|dataFormat}}
         </el-table-column>
         <el-table-column label="操作"
                          :width="130"
